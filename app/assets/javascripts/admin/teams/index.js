@@ -65,14 +65,14 @@ angular.module('app')
       return first_member;
     };
 
-    $scope.working = function (team) {
-      if ($scope.in_progress && team === $scope.current_team) {
+    $scope.working = function (team, name) {
+      if ($scope[name] && $scope[name].in_progress && team === $scope[name].current_team) {
         return true;
       }
     };
 
-    $scope.alert = function (team) {
-      if (!$scope.in_progress && team === $scope.current_team) {
+    $scope.alert = function (team, name) {
+      if ($scope[name] && !$scope[name].in_progress && team === $scope[name].current_team) {
         return true;
       }
     };
@@ -92,17 +92,32 @@ angular.module('app')
 
 
     $scope.updateFeaturedAttribute = function (team) {
-      $scope.current_team = team;
-      $scope.in_progress = true;
+      $scope.featured = {};
+      $scope.featured.current_team = team;
+      $scope.featured.in_progress = true;
       var form_data = {featured: team.featured};
 
       $api.update_team(team.id, form_data).then(function (response) {
         if (response) {
-          $scope.in_progress = false;
+          $scope.featured.in_progress = false;
         }
         
       });
     };
+
+    $scope.updateVerifiedAttribute = function(team) {
+      $scope.verified = {};
+      $scope.verified.current_team = team;
+      $scope.verified.in_progress = true;
+      var form_data = {verified: team.verified};
+
+      $api.update_team(team.id, form_data).then(function (response) {
+        if (response) {
+          $scope.verified.in_progress = false;
+        }
+        
+      });
+    }
   });
 
 

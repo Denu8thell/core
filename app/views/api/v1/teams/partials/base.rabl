@@ -11,6 +11,7 @@ attribute :can_email_stargazers
 attribute :featured
 attribute :created_at
 attribute :updated_at
+attribute :verified
 
 attribute :rfp_enabled
 attribute :activity_total

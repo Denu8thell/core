@@ -106,6 +106,7 @@ class Api::V0::TeamsController < Api::V0::BaseController
       @team.bounties_disabled = params[:bounties_disabled].to_bool if params.has_key?(:bounties_disabled)
       @team.featured = params[:featured].to_bool if params.has_key?(:featured)
       @team.homepage_featured = params[:homepage_featured].to_i > 0 ? params[:homepage_featured].to_i : nil if params.has_key?(:homepage_featured)
+      @team.verified = params[:verified].to_bool if params.has_key?(:verified)
 
       @team.homepage_markdown = params[:homepage_markdown] if params.has_key?(:homepage_markdown)
       @team.new_issue_suggestion_markdown = params[:new_issue_suggestion_markdown] if params.has_key?(:new_issue_suggestion_markdown)

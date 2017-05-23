@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611150448) do
+ActiveRecord::Schema.define(version: 20170523143445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "access_tokens", force: true do |t|
     t.integer  "person_id",  null: false
@@ -1145,6 +1144,7 @@ ActiveRecord::Schema.define(version: 20160611150448) do
     t.integer  "monthly_contributions_count"
     t.boolean  "can_email_stargazers",                                      default: false, null: false
     t.decimal  "previous_month_contributions_sum", precision: 10, scale: 2
+    t.boolean  "verified",                                                  default: false, null: false
   end
 
   add_index "teams", ["activity_total"], name: "index_teams_on_activity_total", using: :btree

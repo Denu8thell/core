@@ -15,6 +15,7 @@
             <th><a ng-click="applySort(currentPage, member_relations_count)">Members</a></th>
             <th><a ng-click="applySort(currentPage, tag_relations_count)">Tags</a></th>
             <th><a ng-click="applySort(currentPage, featured)">Featured</a></th>
+            <th><a ng-click="applySort(currentPage, verified)">Verified</a></th>    
           </tr>
         </thead>
         <tbody>
@@ -27,8 +28,13 @@
             <td>{{ team.tag_relations_count }}</td>
             <td>
               <input type="checkbox" ng-model="team.featured" ng-change="updateFeaturedAttribute(team)"></input>
-              <span ng-show="working(team)"><img style="height:12px; width:12px; margin-left:2px;" ng-src='<%= asset_path("ajax-loader.gif") %>'></img></span>
-              <span ng-show="alert(team)" style="margin-left:2px;" class="label label-success">Done!</span>
+              <span ng-show="working(team, 'featured')"><img style="height:12px; width:12px; margin-left:2px;" ng-src='<%= asset_path("ajax-loader.gif") %>'></img></span>
+              <span ng-show="alert(team, 'featured')" style="margin-left:2px;" class="label label-success">Done!</span>
+            </td>
+            <td>
+              <input type="checkbox" ng-model="team.verified" ng-change="updateVerifiedAttribute(team)"></input>
+              <span ng-show="working(team, 'verified')"><img style="height:12px; width:12px; margin-left:2px;" ng-src='<%= asset_path("ajax-loader.gif") %>'></img></span>
+              <span ng-show="alert(team, 'verified')" style="margin-left:2px;" class="label label-success">Done!</span>
             </td>
         </tbody>
       </table>

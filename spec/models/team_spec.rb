@@ -28,6 +28,7 @@
 #  monthly_contributions_count      :integer
 #  can_email_stargazers             :boolean          default(FALSE), not null
 #  previous_month_contributions_sum :decimal(10, 2)
+#  verified                         :boolean          default(FALSE), not null
 #
 # Indexes
 #
